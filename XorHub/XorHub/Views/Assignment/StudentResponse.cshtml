@@ -1,0 +1,62 @@
+﻿@model XorHub.Models.AssignmentSolutionModel
+
+@{
+    ViewBag.Title = "StudentResponse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /> <br />
+
+<div class="container">
+    <div class="panel panel-body">
+        <h5 style="font-size: 16px"><strong>Title </strong>: @Model.Assignment.Title </h5>
+        <h5 style="font-size: 16px"><strong>Batch </strong>: @Model.Assignment.BatchId </h5>
+    </div>
+
+    <div class="panel panel-body">
+        <embed src=@Url.Content(String.Format("{0}", ViewBag.filePath)) width="100%" height="400" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" >
+    </div>
+
+    <div class="panel panel-body">
+        @if(ViewBag.Message != null)
+        {
+            <div class="alert alert-dismissible alert-warning">
+                @ViewBag.Message
+            </div>
+        }
+
+        @using (Html.BeginForm("submit", "Assignment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(u => u.Assignment.AssignmentId)
+            @Html.HiddenFor(a => a.Assignment.BatchId)
+            @Html.HiddenFor(t => t.Assignment.Title)
+            @Html.HiddenFor(t => t.Assignment.Deadline)
+            <div class="response">
+                <h5>Solution</h5>
+                <input class="form-control" type="file" id="solutionDoc" name="solutionDoc" accept=".pdf" />
+                <br />
+                <input class="btn btn-primary" type="submit" name="Submit" value="Submit"
+                        onsubmit= "return checkFile()" />
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    function checkFile() {
+        var file = document.getElementById('solutionDoc').value;
+
+        if (file == null) {
+            alert("Upload File First!");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
+
+</script>
+
+

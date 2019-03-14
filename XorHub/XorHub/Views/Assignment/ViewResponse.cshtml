@@ -1,0 +1,45 @@
+﻿@model XorHub.Models.AssignmentSolutionModel
+@{
+    ViewBag.Title = "ViewResponses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+
+<div class="container">
+    <div class="panel panel-body">
+        <h5 style="font-size: 16px"><strong>Title </strong>: @Model.Assignment.Title </h5>
+        <h5 style="font-size: 16px"><strong>Batch </strong>: @Model.Assignment.BatchId </h5>
+    </div>
+ 
+    <div class="panel panel-body">
+        @using (Html.BeginForm("submit", "Assignment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(u => u.Assignment.AssignmentId)
+
+            <div>
+                <h5>Responses</h5>
+                @foreach (Solution sol in (IEnumerable<Solution>)ViewBag.solutions)
+                {
+                    <div class="panel panel-body row">
+
+                        <div class="col-md-4">
+                            <a href=@Url.Content(String.Format("/Assignment/Response/{0}", sol.SolutionId))>
+                                <h4><strong> @sol.Username</strong> </h4>
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <small> @sol.UploadedOn</small>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4"></div>
+
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+</div>
+
+

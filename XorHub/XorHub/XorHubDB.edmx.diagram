@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0aae796c83c40ffab896828ad472586" Name="Diagram1">
+        <EntityTypeShape EntityType="XorHubModel.Assignment" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XorHubModel.Batch" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XorHubModel.LoginInfo" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XorHubModel.Solution" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="XorHubModel.FK__Assignmen__Batch__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="XorHubModel.FK__Assignmen__Teach__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="XorHubModel.FK__Solution__Assign__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="XorHubModel.FK__LoginInfo__Batch__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="XorHubModel.FK__Solution__Userna__45F365D3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div id="requests">
+            <div class="well">
+                No Pending Request!
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $.get("GetTeacherRequests", null, PrintTeacherList);
+ 
+    function PrintTeacherList(data) {
+        if (data.length == 0)
+            return;
+
+        if (data.length != 0) {
+            $('#requests').empty();
+        }
+        
+        for (var i = 0 ; i < data.length ; i++) {
+            var row = "<div class=\"panel panel-body\">  <h4> " + data[i].Name + " <small>" + data[i].Username + "</small> </h4>  <input type=\"button\" value=\"Accept\" name=\"Accept\" class=\"btn btn-primary\" onclick=\"approveTeacher('"  + data[i].Username + "')\"> </div> ";
+            $("#requests").append(row);
+        }
+    }
+
+    function approveTeacher(username) {
+        $.post("ApproveTeacher", { username : username}, alert("Teacher Approved!"), 'JSON');
+    }
+</script>
